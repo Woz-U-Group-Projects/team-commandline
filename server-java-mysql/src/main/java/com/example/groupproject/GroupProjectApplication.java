@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import com.example.groupproject.controllers.*;
+import com.example.groupproject.models.*;
 
 @SpringBootApplication
 public class GroupProjectApplication {

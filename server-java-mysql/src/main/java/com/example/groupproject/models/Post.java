@@ -12,20 +12,48 @@ public class Post {
 	//Basic properties
 	private String content;
 	private String name;
+	private int date;
 	private int id;
 	
-	
 	//overloaded constructor
-	public Post(String content, String name, int id) {
+	public Post(String content, String name, int date) {
 		this.content = content;
 		this.name = name;
-		this.id = id;
+		this.date = date;
 	}
 	//general constructor
 	public Post() {
 		content = "";
 		name = "";
-		id = 0;
+		date = 01012000;
+	}
+	
+	//Getters
+	public String getContent() {
+		return content;
+	}
+	public String getName() {
+		return name;
+	}
+	public int getDate() {
+		return date;
+	}
+	public int getId() {
+		return id;
+	}
+	
+	//Setters
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setDate(int date) {
+		this.date = date;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
