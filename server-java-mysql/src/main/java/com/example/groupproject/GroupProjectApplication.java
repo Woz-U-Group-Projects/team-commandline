@@ -13,6 +13,8 @@ public class GroupProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GroupProjectApplication.class, args);
+		PostController PC = new PostController();
+		PC.createPost("This is my post", "Nick", 01012020);
 	}
 	
 	@Bean
