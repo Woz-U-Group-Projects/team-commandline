@@ -19,18 +19,21 @@ public class PostController {
 	
 	//Create
 	public String createPost(String postContent, String name, int date) {
-		Post newPost = new Post(postContent, name, date);
-		dao.save(newPost);
+		//executeUpdate("INSERT INTO Posts (name, content) VALUES (name, postContent);");
+		//close();
 		return "New post created: " + postContent;
 	}
 
 	//Read
 	public String getPost(String posterName, int postId) {
-		return "Get Post Method";
+		//String postContent = executeUpdate("SELECT postContent FROM Posts WHERE Id = " + postId + "AND Name = " + posterName + ";"
+		
+		return ""/*postContent*/;
 	}
 	
 	//Update
 	public String updatePost(String posterName, int postId, String postEdit) {
+		
 		return "This will need to get the existing poost and edit it";
 	}
 	
