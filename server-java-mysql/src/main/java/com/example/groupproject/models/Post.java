@@ -8,12 +8,13 @@ import javax.persistence.GeneratedValue;
 @Table(name="Posts")
 public class Post {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
+	
 	//Basic properties
 	private String content;
 	private String name;
 	private int date;
-	private int id;
 	
 	//overloaded constructor
 	public Post(String content, String name, int date) {
@@ -38,7 +39,7 @@ public class Post {
 	public int getDate() {
 		return date;
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	
@@ -52,7 +53,7 @@ public class Post {
 	public void setDate(int date) {
 		this.date = date;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
