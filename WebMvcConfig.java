@@ -1,4 +1,4 @@
-package com.canvis.config;
+package com.blankblog.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
