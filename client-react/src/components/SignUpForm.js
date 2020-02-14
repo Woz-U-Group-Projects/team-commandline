@@ -2,19 +2,41 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class SignUpForm extends Component {
-    constructor() {
-        super();
+  constructor(props) {
+    super(props);
+           this.state = { token: "", email: "", username: "", password: "",  hasAgreed: false };
+   }
 
-        this.state = {
-            email: '',
-            password: '',
-            name: '',
-            hasAgreed: false
-        };
+   
+   onLogin = () => {
+    fetch("http://localhost:8080/login", {
+    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+    method: "POST",
+    body: JSON.stringify({ username: this.state.username, password: this.state.password, email: this.state.email})
+    })
+    .then(res => res.headers.get("authorization"))
+    .then(token => {
+      if (token) {
+        this.setState({ ...this.state, token: token });
+      } else {
+        this.setState({ ...this.state, error: "Unable to login with username and password or email." });
+      }
+    });
+  }
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+  onUsernameChange = (e) => this.setState({ ...this.state, username: e.target.value });
+  onEmailChange = (e) => this.setState({ ...this.state, email: e.target.value });
+  onPasswordChange = (e) => this.setState({ ...this.state, password: e.target.value });
+
+
+  onGetValues = () => {
+    fetch("http://localhost:8080/api/values", {
+      headers: { 'Authorization': this.state.token }
+    })
+    .then(res => res.json())
+    .then(json => this.setState({ ...this.state, values: json }));
+  }
+
 
     handleChange(e) {
         let target = e.target;

@@ -9,6 +9,14 @@
     background-color: #66DAC7;
   }
   
+  .nav-links{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+  }
+  
   .App__Form {
     width: 50%;
     background-color: #2E4158;
@@ -18,7 +26,7 @@
   
   .PageSwitcher {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end; 
     margin-bottom: 10%;
   }
   
@@ -102,7 +110,7 @@
   .FormField__Input::placeholder {
     color: #616E7F;
   }
-  
+   
   .FormField__Button {
     background-color: #52C4B9;
     color: white;

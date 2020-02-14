@@ -1,36 +1,28 @@
-import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
-import SignUpForm from './components/SignUpForm';
-import SignInForm from './components/SignInForm';
-
+import React from 'react';
 import './App.css';
-
-class App extends Component {
-  render() {
-    return (
-      <Router basename="/react-auth-ui/">
-        <div className="App">
-          <div className="App__Aside"></div>
-          <div className="App__Form">
-            <div className="PageSwitcher">
-                <NavLink to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
-                <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
-              </div>
-
-              <div className="FormTitle">
-                  <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink> or <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink>
-              </div>
-
-              <Route exact path="/" component={SignUpForm}>
-              </Route>
-              <Route path="/sign-in" component={SignInForm}>
-              </Route>
-          </div>
-
-        </div>
-      </Router>
-    );
-  }
+import Nav from './components/Nav';
+import Post from './components/Post';
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import PostForm from './components/PostForm';
+function App() {
+  return (
+    <Router>
+    <div className="App">
+      <Nav />
+      <Switch>
+      <Route path="/" exact component={Home}/>
+      <Route path="/Post" component={Post}/>
+      <Route path="/PostForm" component={PostForm}/>
+      </Switch>
+    </div>
+    </Router>
+  ); 
 }
+
+const Home = () => (
+  <div>
+    <h1>Home Page</h1>
+  </div>
+)
 
 export default App;

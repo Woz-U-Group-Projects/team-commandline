@@ -8,7 +8,7 @@ class PostForm extends React.Component {
       this.state = {
         value: '',
         contact: '',
-        data = ''
+        data: ''
       };
       // submit handling
       this.handleChange = this.handleChange.bind(this);
