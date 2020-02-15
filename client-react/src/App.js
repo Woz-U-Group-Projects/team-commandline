@@ -1,28 +1,40 @@
-import React from 'react';
-import './App.css';
-import Nav from './components/Nav';
-import Post from './components/Post';
-import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import PostForm from './components/PostForm';
-function App() {
-  return (
-    <Router>
-    <div className="App">
-      <Nav />
-      <Switch>
-      <Route path="/" exact component={Home}/>
-      <Route path="/Post" component={Post}/>
-      <Route path="/PostForm" component={PostForm}/>
-      </Switch>
-    </div>
-    </Router>
-  ); 
+import React, { Component } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { connect } from "react-redux";
+import BaseRouter from "./routes";
+import * as actions from "./store/actions/auth";
+import "semantic-ui-css/semantic.min.css";
+import CustomLayout from "./containers/Layout";
+
+class App extends Component {
+  componentDidMount() {
+    this.props.onTryAutoSignup();
+  }
+
+  render() {
+    return (
+      <Router>
+        <CustomLayout {...this.props}>
+          <BaseRouter />
+        </CustomLayout>
+      </Router>
+    );
+  }
 }
 
-const Home = () => (
-  <div>
-    <h1>Home Page</h1>
-  </div>
-)
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.token !== null
+  };
+};
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignup: () => dispatch(actions.authCheckState())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
