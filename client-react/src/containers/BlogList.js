@@ -39,11 +39,6 @@ class BlogList extends React.Component {
         const { data, error, loading } = this.state;
         return (
             <Container>
-                {error && <Message
-                    error
-                    header='There was some errors with your submission'
-                    content={console.log(JSON.stringify(data))}
-                />
                 }
                 {loading && <Segment>
                     <Dimmer active inverted>

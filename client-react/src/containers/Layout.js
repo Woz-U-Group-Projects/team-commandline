@@ -38,8 +38,14 @@ class CustomLayout extends React.Component {
                   </Link>
                 </React.Fragment>
               )}
+            <Link to="/PostForm">
+              <Menu.Item header>CreatePost</Menu.Item>
+            </Link>
             <Link to="/bloglist">
               <Menu.Item header>Blogs</Menu.Item>
+            </Link>
+            <Link to="/users">
+              <Menu.Item header>Users</Menu.Item>
             </Link>
           </Container>
         </Menu>
