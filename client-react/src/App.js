@@ -6,6 +6,57 @@ import SignInForm from './components/SignInForm';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {token: "", email: "", password: "", values: [], error: ""};
+  }
+  
+  onSignIn = () => {
+    fetch("http://localhost:8080/signIn", //Check with Kamal about this routing!
+     {headers: {'Accept': 'application/json', 'Content-type': 'application/json'},
+    method: "POST",
+    body: JSON.stringify({email: this.state.email, password: this.state.password})
+    }).then(
+      res => res.headers.get("authorization")
+    ).then(
+      token => {
+      if(token){
+        this.setState({ ...this.state, token: token});
+      }else{
+        this.setState({ ...this.state, error: "Unable to sign in using that email and password"});
+      }
+    });
+
+
+    //Temporary test block
+    if(this.state.token != ""){
+      console.log("sign in success");
+    }else{
+      console.log("sign in failed");
+    }
+  }
+
+  onSignUp = () =>{
+    fetch("http://localhost:8080/signUp")
+  }
+
+  //Get email value from user when changed
+  onEmailChange = (e) => this.setState({...this.state, email: e.target.value});
+
+  //Get password value from user when changed
+  onPasswordChange = (e) => this.setState({ ...this.state, password: e.target.value});
+
+
+  onGetValues = () => {
+    fetch("values url", {
+      headers: {'Authorization' : this.state.token}
+    }).then(
+      res => res.json()
+    ).then(
+      json => this.setState({...this.state, values: json})
+    );
+  }
+
   render() {
     return (
       <Router basename="/react-auth-ui/">
