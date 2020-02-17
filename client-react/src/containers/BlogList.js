@@ -7,7 +7,7 @@ import {
     Icon,
     Image,
     Item,
-    Label,
+    Header,
     Message,
     Loader,
     Segment
@@ -25,48 +25,21 @@ class BlogList extends React.Component {
         data: []
     }
 
-    componentDidMount() {
-        axios.get(BlogListURL)
-            .then(res => {
-                this.setState({ data: res.data, loading: false })
-            })
-            .catch(err => {
-                this.setState({ error: err })
-            })
-    }
 
     render() {
-        const { data, error, loading } = this.state;
         return (
-            <Container>
-                }
-                {loading && <Segment>
-                    <Dimmer active inverted>
-                        <Loader inverted>Loading</Loader>
-                    </Dimmer>
-
-                    <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                </Segment>}
-                <Item.Group divided>
-                    <Item>
-                        <Item.Image src='https://techcrunch.com/wp-content/uploads/2020/02/GettyImages-639030958.jpg?w=1390&crop=1' />
-                        <Item.Content>
-                            <Item.Header as='a'>My Neighbor Totoro</Item.Header>
-                            <Item.Meta>
-                                <span className='cinema'>IFC Cinema</span>
-                            </Item.Meta>
-                            <Item.Description>{paragraph}</Item.Description>
-                            <Item.Extra>
-                                <Button primary floated='right' icon labelPosition="right">
-                                    Add to cart
-            <Icon name='add to cart' />
-                                </Button>
-                                <Label>Limited</Label>
-                            </Item.Extra>
-                        </Item.Content>
-                    </Item>
-                </Item.Group>
-            </Container>
+    <Container>
+      <Header as='h2'>Dogs Roles with Humans</Header>
+      <p>
+        Domestic dogs inherited complex behaviors, such as bite inhibition, from
+        their wolf ancestors, which would have been pack hunters with complex
+        body language. These sophisticated forms of social cognition and
+        communication may account for their trainability, playfulness, and
+        ability to fit into human households and social situations, and these
+        attributes have given dogs a relationship with humans that has enabled
+        them to become one of the most successful species on the planet today.
+      </p>
+    </Container>
         )
     }
 }
