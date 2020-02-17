@@ -5,12 +5,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import com.example.groupproject.controllers.*;
+import com.example.groupproject.models.*;
 
 @SpringBootApplication
 public class GroupProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GroupProjectApplication.class, args);
+		PostController PC = new PostController();
+		PC.createPost("This is my post", "Nick", 01012020);
 	}
 	
 	@Bean
