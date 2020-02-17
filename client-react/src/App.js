@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
-import SignUpForm from './components/SignUpForm';
-import SignInForm from './components/SignInForm';
-
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { connect } from "react-redux";
+import BaseRouter from "./routes";
+import * as actions from "./store/actions/auth";
+import "semantic-ui-css/semantic.min.css";
+import CustomLayout from "./containers/Layout";
 
 class App extends Component {
+<<<<<<< HEAD
   constructor(props){
     super(props);
     this.state = {token: "", email: "", password: "", values: [], error: ""};
@@ -55,33 +57,36 @@ class App extends Component {
     ).then(
       json => this.setState({...this.state, values: json})
     );
+=======
+  componentDidMount() {
+    this.props.onTryAutoSignup();
+>>>>>>> be97f9303695865ad74a84dd91a303594d0ab5ec
   }
 
   render() {
     return (
-      <Router basename="/react-auth-ui/">
-        <div className="App">
-          <div className="App__Aside"></div>
-          <div className="App__Form">
-            <div className="PageSwitcher">
-                <NavLink to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
-                <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
-              </div>
-
-              <div className="FormTitle">
-                  <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink> or <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink>
-              </div>
-
-              <Route exact path="/" component={SignUpForm}>
-              </Route>
-              <Route path="/sign-in" component={SignInForm}>
-              </Route>
-          </div>
-
-        </div>
+      <Router>
+        <CustomLayout {...this.props}>
+          <BaseRouter />
+        </CustomLayout>
       </Router>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.token !== null
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignup: () => dispatch(actions.authCheckState())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
