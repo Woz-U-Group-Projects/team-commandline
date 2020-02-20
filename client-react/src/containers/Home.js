@@ -10,6 +10,7 @@ import {
   Image,
   List,
   Menu,
+  Statistic,
   Responsive,
   Segment,
   Sidebar,
@@ -90,6 +91,13 @@ const HomepageLayout = () => (
   <ResponsiveContainer>
     <Segment style={{ padding: "8em 0em" }} vertical>
       <Grid container stackable verticalAlign="middle">
+      <Header as="h3" style={{ fontSize: "2em" }}>
+          Most Viewed
+        </Header>
+        <Statistic>
+        <Statistic.Label>Views</Statistic.Label>
+        <Statistic.Value>40,509</Statistic.Value>
+        </Statistic>
         <Grid.Row>
           <Grid.Column width={8}>
             <Header as="h3" style={{ fontSize: "2em" }}>
@@ -177,29 +185,6 @@ const HomepageLayout = () => (
           Read More
         </Button>
       </Container>
-    </Segment>
-    <Segment style={{ padding: "0em" }} vertical>
-      <Grid celled="internally" columns="equal" stackable>
-        <Grid.Row textAlign="center">
-          <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
-            <Header as="h3" style={{ fontSize: "2em" }}>
-              "What a Company"
-            </Header>
-            <p style={{ fontSize: "1.33em" }}>
-              That is what they all say about us
-            </p>
-          </Grid.Column>
-          <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
-            <Header as="h3" style={{ fontSize: "2em" }}>
-              "I shouldn't have gone with their competitor."
-            </Header>
-            <p style={{ fontSize: "1.33em" }}>
-              <Image avatar src="/images/avatar/large/nan.jpg" />
-              <b>Nan</b> Chief Fun Officer Acme Toys
-            </p>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
     </Segment>
   </ResponsiveContainer>
 );
