@@ -37,6 +37,13 @@ const PostForm = () => (
               placeholder='Opinion'
             />
           </Form>
+          <Button
+                  color="teal"
+                  fluid
+                  size="large"
+                >
+                  Submit
+                </Button>
           <div class="form-group">
 				<div class="${successMessage} ? 'alert alert-success' : ''" text="${successMessage}"></div>
 			</div>

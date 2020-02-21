@@ -26,7 +26,21 @@ class LoginForm extends React.Component {
     const { username, password } = this.state;
     this.props.login(username, password);
   };
-  
+  onLogin = () => {
+    fetch("http://localhost:8080/login", {
+    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+    method: "POST",
+    body: JSON.stringify({ username: this.state.username, password: this.state.password })
+    })
+    .then(res => res.headers.get("authorization"))
+    .then(token => {
+      if (token) {
+        this.setState({ ...this.state, token: token });
+      } else {
+        this.setState({ ...this.state, error: "Unable to login with username and password." });
+      }
+    });
+  }
 
   render() {
     const { error, loading, token } = this.props;
