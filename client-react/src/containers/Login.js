@@ -26,6 +26,7 @@ class LoginForm extends React.Component {
     const { username, password } = this.state;
     this.props.login(username, password);
   };
+  
 
   render() {
     const { error, loading, token } = this.props;
@@ -33,7 +34,7 @@ class LoginForm extends React.Component {
     if (token) {
       return <Redirect to="/" />;
     }
-    return (
+    return ( 
       <Grid
         textAlign="center"
         style={{ height: "100vh" }}
@@ -45,21 +46,26 @@ class LoginForm extends React.Component {
           </Header>
           {error && <p>{this.props.error.message}</p>}
 
+
           <React.Fragment>
             <Form size="large" onSubmit={this.handleSubmit}>
               <Segment stacked>
                 <Form.Input
-                  onChange={this.handleChange}
+                  onChange={this.props.onUsernameChange}
                   value={username}
                   name="username"
+                  type="text"
+                  id="username"
                   fluid
                   icon="user"
                   iconPosition="left"
                   placeholder="Username"
                 />
                 <Form.Input
-                  onChange={this.handleChange}
+                  onChange={this.props.onPasswordChange}
                   fluid
+                  id="password"
+                  type="password"
                   value={password}
                   name="password"
                   icon="lock"
@@ -70,6 +76,7 @@ class LoginForm extends React.Component {
 
                 <Button
                   color="teal"
+                  onClick={this.props.onLogin}
                   fluid
                   size="large"
                   loading={loading}

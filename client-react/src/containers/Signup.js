@@ -50,9 +50,11 @@ class RegistrationForm extends React.Component {
             <Form size="large" onSubmit={this.handleSubmit}>
               <Segment stacked>
                 <Form.Input
-                  onChange={this.handleChange}
+                  onChange={this.props.onUsernameChange}
                   value={username}
                   name="username"
+                  type="text"
+                  id="username"
                   fluid
                   icon="user"
                   iconPosition="left"
@@ -62,16 +64,20 @@ class RegistrationForm extends React.Component {
                   onChange={this.handleChange}
                   value={email}
                   name="email"
+                  id="email"
+                  type="email"
                   fluid
                   icon="mail"
                   iconPosition="left"
                   placeholder="E-mail address"
                 />
                 <Form.Input
-                  onChange={this.handleChange}
+                  onChange={this.props.onPasswordChange}
                   fluid
                   value={password}
+                  type="password"
                   name="password"
+                  id="password"
                   icon="lock"
                   iconPosition="left"
                   placeholder="Password"

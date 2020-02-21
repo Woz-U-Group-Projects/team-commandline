@@ -16,34 +16,30 @@ const PostForm = () => (
 
           <React.Fragment>
           <Segment stacked>
-          <Form>
+          <Form action="@{/posts/create}" object="${post}" method="post">
            <Form.Group widths='equal'>
               <Form.Field
                 id='form-input-control-first-name'
                 control={Input}
+                type="text"
+                field="*{title}"
+                class="${#fields.hasErrors('title')  ? 'form-control is-invalid' : 'form-control'}"
                 label='Title'
                 placeholder='New Tech start-up makes millions in 90 Days'
-              />
-              <Form.Field
-                id='form-input-control-last-name'
-                control={Input}
-                label='Author'
-                placeholder='Full Name'
               />
             </Form.Group>
             <Form.Field
               id='form-textarea-control-opinion'
               control={TextArea}
+              field="*{body}"
+              class="${#fields.hasErrors('body') ? 'form-control is-invalid' : 'form-control'}"
               label='Content'
               placeholder='Opinion'
             />
-            <Form.Field
-              id='form-button-control-public'
-              control={Button}
-              content='Confirm'
-              label='Share'
-            />
           </Form>
+          <div class="form-group">
+				<div class="${successMessage} ? 'alert alert-success' : ''" text="${successMessage}"></div>
+			</div>
               </Segment>
           </React.Fragment>
         </Grid.Column>
